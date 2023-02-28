@@ -13,12 +13,9 @@ class RobotJoystick extends StatelessWidget {
   double _linearVel = 0;
   double _angularVel = 0;
   Robot _robot = Robot();
-  double _size = 100;
+  final double _size;
 
-  RobotJoystick(double size) {
-    super.key;
-    _size = size;
-  }
+  RobotJoystick({super.key, required double size}) : _size = size;
 
   void _onDirectionChanged(double angleDegree, double normalizedDistance) {
     var angleRadians = radians(angleDegree);
