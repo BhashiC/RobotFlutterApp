@@ -22,7 +22,7 @@ class RobotApp extends StatelessWidget {
           body: Container(
             alignment: Alignment.center,
             //width: 200,
-            child: RobotJoystick(250),
+            child: RobotJoystick(size: 250),
           ),
         ),
       ),

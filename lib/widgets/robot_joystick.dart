@@ -29,10 +29,7 @@ class RobotJoystick extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _robot = Provider.of<Robot>(context, listen: false);
-    return Container(
-      width: _size,
-      // decoration:
-      //     BoxDecoration(border: Border.all(color: materialColors.Colors.black)),
+    return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
