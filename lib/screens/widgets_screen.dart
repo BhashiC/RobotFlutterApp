@@ -4,7 +4,7 @@ import '../widgets/joystick_widget.dart';
 import '../widgets/tile_widget.dart';
 import 'package:enum_to_string/enum_to_string.dart';
 
-enum WidgetNames { led, joystick, pidController, servoMotor }
+enum WidgetNames { leds, joystick, pidController, servoMotor }
 
 class WidgetsScreen extends StatelessWidget {
   @override
@@ -21,9 +21,9 @@ class WidgetsScreen extends StatelessWidget {
         ),
         children: [
           TileWidget(
-            EnumToString.convertToString(WidgetNames.led, camelCase: true),
+            EnumToString.convertToString(WidgetNames.leds, camelCase: true),
             Colors.blue,
-            WidgetNames.led,
+            WidgetNames.leds,
           ),
           TileWidget(
             EnumToString.convertToString(WidgetNames.joystick, camelCase: true),

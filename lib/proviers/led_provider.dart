@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 
-class ledProvider with ChangeNotifier {
+class LedProvider with ChangeNotifier {
+  final String _name;
+  final Color _color;
   bool _ledStatus = false;
 
-  set ledStatus(bool status) {
-    _ledStatus = status;
-  }
-
+  String get name => _name;
+  Color get color => _color;
   bool get ledStatus => _ledStatus;
 
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
+  set ledStatus(bool val) {
+    _ledStatus = val;
+    notifyListeners();
   }
+
+  LedProvider(this._name, this._color);
 }

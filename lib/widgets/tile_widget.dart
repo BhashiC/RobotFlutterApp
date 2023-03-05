@@ -4,6 +4,7 @@ import './joystick_widget.dart';
 import './led_widget.dart';
 import './pid_widget.dart';
 import './servo_widget.dart';
+import '../screens/leds_screen.dart';
 
 class TileWidget extends StatelessWidget {
   final String _title;
@@ -14,9 +15,9 @@ class TileWidget extends StatelessWidget {
 
   void selectWidget(BuildContext context, WidgetNames widgetToPop) {
     switch (widgetToPop) {
-      case WidgetNames.led:
-        Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-          return LedWidget(Colors.blue);
+      case WidgetNames.leds:
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+          return LedsScreen(); //(Colors.blue);
         }));
         break;
       case WidgetNames.joystick:

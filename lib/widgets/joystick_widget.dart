@@ -4,7 +4,7 @@ import 'package:control_pad/control_pad.dart';
 import 'package:vector_math/vector_math.dart';
 import 'package:flutter/src/material/colors.dart' as materialColors;
 import 'dart:math';
-import '../proviers/joystick_provider.dart';
+import '../proviers/robot_provider.dart';
 import 'package:provider/provider.dart';
 
 const List<double> speeds = <double>[0.25, 0.5, 0.75, 1.0, 1.25, 1.5];
@@ -12,24 +12,22 @@ const List<double> speeds = <double>[0.25, 0.5, 0.75, 1.0, 1.25, 1.5];
 class JoystickWidget extends StatelessWidget {
   double _linearVel = 0;
   double _angularVel = 0;
-  joystickProvider _joystick = joystickProvider();
+  RobotProvider _robot = RobotProvider();
   final double _size;
 
   JoystickWidget(this._size);
 
   void _onDirectionChanged(double angleDegree, double normalizedDistance) {
     var angleRadians = radians(angleDegree);
-    _linearVel =
-        _joystick.getLinearMax() * normalizedDistance * cos(angleRadians);
-    _angularVel =
-        _joystick.getAngularMax() * normalizedDistance * sin(angleRadians);
-    _joystick.setLinearVel(_linearVel);
-    _joystick.setAngularVel(_angularVel);
+    _linearVel = _robot.linearMax * normalizedDistance * cos(angleRadians);
+    _angularVel = _robot.angularMax * normalizedDistance * sin(angleRadians);
+    _robot.linearVel = _linearVel;
+    _robot.angularVel = _angularVel;
   }
 
   @override
   Widget build(BuildContext context) {
-    _joystick = Provider.of<joystickProvider>(context, listen: false);
+    _robot = Provider.of<RobotProvider>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         title: const Text("Joystick Page"),
@@ -42,15 +40,15 @@ class JoystickWidget extends StatelessWidget {
               children: <Widget>[
                 const SizedBox(height: 10),
                 const Text('Linear Velocity (ms-1)'),
-                Consumer<joystickProvider>(
+                Consumer<RobotProvider>(
                   builder: (ctx, robot, _) =>
-                      Text(robot.getLinearVel().toStringAsFixed(2)),
+                      Text(robot.linearVel.toStringAsFixed(2)),
                 ),
                 const SizedBox(height: 10),
                 const Text('Angular Velocity (rads-1)'),
-                Consumer<joystickProvider>(
+                Consumer<RobotProvider>(
                   builder: (ctx, robot, _) =>
-                      Text(robot.getAngularVel().toStringAsFixed(2)),
+                      Text(robot.angularVel.toStringAsFixed(2)),
                 ),
                 const SizedBox(height: 10),
                 JoystickView(
@@ -61,7 +59,7 @@ class JoystickWidget extends StatelessWidget {
                 const SizedBox(height: 10),
                 const Text('Linear Max Velocity (ms-1)'),
                 const SizedBox(height: 10),
-                Consumer<joystickProvider>(
+                Consumer<RobotProvider>(
                   builder: (ctx, robot, _) => DropdownButton(
                     items: speeds.map<DropdownMenuItem<double>>((double value) {
                       return DropdownMenuItem<double>(
@@ -69,14 +67,14 @@ class JoystickWidget extends StatelessWidget {
                         child: Text(value.toStringAsFixed(2)),
                       );
                     }).toList(),
-                    onChanged: (val) => robot.setLinearMax(val as double),
-                    value: robot.getLinearMax(),
+                    onChanged: (val) => robot.linearMax = val as double,
+                    value: robot.linearMax,
                   ),
                 ),
                 const SizedBox(height: 10),
                 const Text('Angular Max Velocity (rad-1)'),
                 const SizedBox(height: 10),
-                Consumer<joystickProvider>(
+                Consumer<RobotProvider>(
                   builder: (ctx, robot, _) => DropdownButton(
                     items: speeds.map<DropdownMenuItem<double>>((double value) {
                       return DropdownMenuItem<double>(
@@ -84,8 +82,8 @@ class JoystickWidget extends StatelessWidget {
                         child: Text(value.toStringAsFixed(2)),
                       );
                     }).toList(),
-                    onChanged: (val) => robot.setAngularMax(val as double),
-                    value: robot.getAngularMax(),
+                    onChanged: (val) => robot.angularMax = val as double,
+                    value: robot.angularMax,
                   ),
                 ),
               ],
