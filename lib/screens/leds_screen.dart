@@ -26,7 +26,7 @@ class LedsScreen extends StatelessWidget {
           itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
             value: _robot.leds[i],
             child: LedWidget(
-              _robot.leds[i].name,
+              _robot.leds[i].displayName,
               _robot.leds[i].color,
             ),
           ),

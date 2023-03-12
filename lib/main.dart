@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/material/colors.dart' as materialColors;
 import 'package:provider/provider.dart';
+import 'package:robot_app/globals.dart';
 import 'proviers/robot_provider.dart';
 import 'widgets/joystick_widget.dart';
 import 'widgets/led_widget.dart';
@@ -15,8 +16,8 @@ class RobotApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => RobotProvider()),
-        //ChangeNotifierProvider(create: (context) => Cart()),
+        ChangeNotifierProvider(create: (context) => RobotProvider.instance),
+        ChangeNotifierProvider(create: (context) => WebSocketManager.instance),
       ],
       child: MaterialApp(
         title: 'Robot App',

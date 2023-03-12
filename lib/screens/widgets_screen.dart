@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:robot_app/globals.dart';
 import '../widgets/led_widget.dart';
 import '../widgets/joystick_widget.dart';
 import '../widgets/tile_widget.dart';
 import 'package:enum_to_string/enum_to_string.dart';
-
-enum WidgetNames { leds, joystick, pidController, servoMotor }
+import '../enums.dart';
+import 'package:robot_app/globals.dart';
 
 class WidgetsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    WebSocketManager.instance.updateSensors();
     return Scaffold(
       appBar: AppBar(title: const Text("Robot App")),
       body: GridView(
@@ -40,6 +42,11 @@ class WidgetsScreen extends StatelessWidget {
                   camelCase: true),
               Colors.purple,
               WidgetNames.servoMotor),
+          TileWidget(
+              EnumToString.convertToString(WidgetNames.webSocket,
+                  camelCase: true),
+              Colors.green,
+              WidgetNames.webSocket),
         ],
       ),
     );

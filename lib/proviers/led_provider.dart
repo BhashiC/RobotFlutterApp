@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class LedProvider with ChangeNotifier {
-  final String _name;
+  final String _displayName;
+  final String _connectivityName;
   final Color _color;
   bool _ledStatus = false;
 
-  String get name => _name;
+  String get displayName => _displayName;
+  String get connectivityName => _connectivityName;
   Color get color => _color;
   bool get ledStatus => _ledStatus;
 
@@ -14,5 +16,5 @@ class LedProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  LedProvider(this._name, this._color);
+  LedProvider(this._displayName, this._connectivityName, this._color);
 }

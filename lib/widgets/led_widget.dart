@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import '../globals.dart';
 
 class LedWidget extends StatelessWidget {
-  final channel = IOWebSocketChannel.connect('ws://192.168.1.100:81');
+  //final channel = IOWebSocketChannel.connect('ws://192.168.1.100:81');
   String _name;
   Color _color;
 
@@ -14,12 +14,13 @@ class LedWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var led = Provider.of<LedProvider>(context, listen: false);
-    print(led.name + " Builder");
+    print(led.displayName + " Builder");
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(led.name),
+        Text(led.displayName),
         const SizedBox(height: 10),
+        /*
         StreamBuilder(
           stream: channel.stream,
           builder: (context, snapshot) {
@@ -41,12 +42,29 @@ class LedWidget extends StatelessWidget {
             }
           },
         ),
+        */
+        Consumer<LedProvider>(
+          builder: (ctx, led, _) => (Icon(
+            led.ledStatus == true ? Icons.circle_sharp : Icons.circle_outlined,
+            color: _color,
+            size: 50,
+          )),
+        ),
         const SizedBox(height: 10),
         TextButton(
           child: const Text('Toggle LED'),
           onPressed: () {
-            print(led.name + " toggled");
-            channel.sink.add('toggle_led');
+            String msg = "";
+            if (led.ledStatus) {
+              msg = led.connectivityName + "_0";
+            } else {
+              msg = led.connectivityName + "_1";
+            }
+            //led.ledStatus = !led.ledStatus;
+            WebSocketManager.instance.sendMsgAndUpdateUI(msg);
+            //WebSocketManager.instance.updateSensors();
+            //print("Status: ${led.ledStatus}");
+            //print(WebSocketManager.instance.sendReceiveMessage(msg));
           },
         ),
       ],

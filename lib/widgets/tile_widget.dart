@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:robot_app/widgets/websocket_widget.dart';
 import '../screens/widgets_screen.dart';
 import './joystick_widget.dart';
 import './led_widget.dart';
 import './pid_widget.dart';
 import './servo_widget.dart';
 import '../screens/leds_screen.dart';
+import '../enums.dart';
 
 class TileWidget extends StatelessWidget {
   final String _title;
@@ -27,12 +29,17 @@ class TileWidget extends StatelessWidget {
         break;
       case WidgetNames.pidController:
         Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-          return pidWidget();
+          return PidWidget();
         }));
         break;
       case WidgetNames.servoMotor:
         Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-          return servowidget();
+          return ServoWidget();
+        }));
+        break;
+      case WidgetNames.webSocket:
+        Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+          return webSocketWidget();
         }));
         break;
     }

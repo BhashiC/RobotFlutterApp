@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class servowidget extends StatelessWidget {
-  const servowidget({super.key});
+class ServoWidget extends StatelessWidget {
+  const ServoWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

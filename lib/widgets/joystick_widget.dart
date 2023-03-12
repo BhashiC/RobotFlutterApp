@@ -12,7 +12,7 @@ const List<double> speeds = <double>[0.25, 0.5, 0.75, 1.0, 1.25, 1.5];
 class JoystickWidget extends StatelessWidget {
   double _linearVel = 0;
   double _angularVel = 0;
-  RobotProvider _robot = RobotProvider();
+  RobotProvider _robot = RobotProvider.instance;
   final double _size;
 
   JoystickWidget(this._size);
