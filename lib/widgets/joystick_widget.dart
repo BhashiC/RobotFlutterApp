@@ -7,7 +7,7 @@ import 'dart:math';
 import '../proviers/robot_provider.dart';
 import 'package:provider/provider.dart';
 
-const List<double> speeds = <double>[0.25, 0.5, 0.75, 1.0, 1.25, 1.5];
+const List<double> _speeds = <double>[0.25, 0.5, 0.75, 1.0, 1.25, 1.5];
 
 class JoystickWidget extends StatelessWidget {
   double _linearVel = 0;
@@ -61,7 +61,8 @@ class JoystickWidget extends StatelessWidget {
                 const SizedBox(height: 10),
                 Consumer<RobotProvider>(
                   builder: (ctx, robot, _) => DropdownButton(
-                    items: speeds.map<DropdownMenuItem<double>>((double value) {
+                    items:
+                        _speeds.map<DropdownMenuItem<double>>((double value) {
                       return DropdownMenuItem<double>(
                         value: value,
                         child: Text(value.toStringAsFixed(2)),
@@ -76,7 +77,8 @@ class JoystickWidget extends StatelessWidget {
                 const SizedBox(height: 10),
                 Consumer<RobotProvider>(
                   builder: (ctx, robot, _) => DropdownButton(
-                    items: speeds.map<DropdownMenuItem<double>>((double value) {
+                    items:
+                        _speeds.map<DropdownMenuItem<double>>((double value) {
                       return DropdownMenuItem<double>(
                         value: value,
                         child: Text(value.toStringAsFixed(2)),

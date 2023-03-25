@@ -43,6 +43,8 @@ dev_dependencies:
   vector_math: ^2.0.8
   provider: ^6.0.5
   enum_to_string: ^2.0.1
+  flutter_titled_container: ^1.0.7
+
   # provider: ^4.0.0
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

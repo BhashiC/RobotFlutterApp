@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:robot_app/screens/pids_screen.dart';
 import 'package:robot_app/widgets/websocket_widget.dart';
 import '../screens/widgets_screen.dart';
 import './joystick_widget.dart';
@@ -29,7 +30,7 @@ class TileWidget extends StatelessWidget {
         break;
       case WidgetNames.pidController:
         Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-          return PidWidget();
+          return PidsScreen(); //PidWidget();
         }));
         break;
       case WidgetNames.servoMotor:

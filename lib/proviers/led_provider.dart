@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:robot_app/proviers/comp_base_provider.dart';
 
-class LedProvider with ChangeNotifier {
-  final String _displayName;
-  final String _connectivityName;
-  final Color _color;
+class LedProvider extends CompBaseProvider {
   bool _ledStatus = false;
+  final Color _color;
 
-  String get displayName => _displayName;
-  String get connectivityName => _connectivityName;
-  Color get color => _color;
   bool get ledStatus => _ledStatus;
+  Color get color => _color;
 
   set ledStatus(bool val) {
     _ledStatus = val;
     notifyListeners();
   }
 
-  LedProvider(this._displayName, this._connectivityName, this._color);
+  LedProvider(String displayName, String connectivityName, this._color)
+      : super(displayName, connectivityName);
 }
