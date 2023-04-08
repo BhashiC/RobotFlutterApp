@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:web_socket_channel/io.dart';
 import '../proviers/led_provider.dart';
 import 'package:provider/provider.dart';
-import '../globals.dart';
+import '../proviers/web_socket_provider.dart';
+import 'package:robot_app/proviers/robot_provider.dart';
 
 class LedWidget extends StatelessWidget {
   //final channel = IOWebSocketChannel.connect('ws://192.168.1.100:81');
@@ -60,11 +61,8 @@ class LedWidget extends StatelessWidget {
             } else {
               msg = led.connectivityName + "_1";
             }
-            //led.ledStatus = !led.ledStatus;
-            WebSocketManager.instance.sendMsgAndUpdateUI(msg);
-            //WebSocketManager.instance.updateSensors();
-            //print("Status: ${led.ledStatus}");
-            //print(WebSocketManager.instance.sendReceiveMessage(msg));
+            //WebSocketProvider.instance.sendMsgAndUpdateUI(msg);
+            RobotProvider.instance.WebSocket.sendMsgAndUpdateUI(msg);
           },
         ),
       ],

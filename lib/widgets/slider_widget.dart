@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../proviers/slider_provider.dart';
 import 'package:provider/provider.dart';
-import '../globals.dart';
+import '../proviers/web_socket_provider.dart';
 
 class SliderWidget extends StatelessWidget {
   final List<double> _limits;

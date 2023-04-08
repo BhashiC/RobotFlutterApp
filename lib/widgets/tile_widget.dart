@@ -40,7 +40,7 @@ class TileWidget extends StatelessWidget {
         break;
       case WidgetNames.webSocket:
         Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-          return webSocketWidget();
+          return WebSocketWidget();
         }));
         break;
     }

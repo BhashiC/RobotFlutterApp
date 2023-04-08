@@ -6,25 +6,54 @@ import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 //import 'package:web_socket_channel/status.dart' as status;
 
-class WebSocketManager with ChangeNotifier {
-  static WebSocketManager? _instance;
+class WebSocketProvider with ChangeNotifier {
+  static WebSocketProvider? _instance;
   static WebSocketChannel? _channel;
   String _receivedMsg = "";
+  String _ipAddress = "";
+  String _port = "";
 
   String get receivedMessage => _receivedMsg;
+  String get ipAddress => _ipAddress;
+  String get port => _port;
 
-  set _receivedMessage(String val) {
+  set receivedMessage(String val) {
     _receivedMsg = val;
     notifyListeners();
   }
 
-  WebSocketManager._internal() {
+  set ipAddress(String val) {
+    _ipAddress = val;
+    notifyListeners();
+  }
+
+  set port(String val) {
+    _port = val;
+    notifyListeners();
+  }
+
+  WebSocketProvider(this._ipAddress, this._port) {
+    Connect();
+  }
+
+  WebSocketProvider._internal() {
+    //_channel = IOWebSocketChannel.connect('ws://${_ipAddress}:${_port}');
     _channel = IOWebSocketChannel.connect('ws://192.168.1.100:81');
   }
 
-  static WebSocketManager get instance {
-    _instance ??= WebSocketManager._internal();
-    return _instance!;
+  // static WebSocketProvider get instance {
+  //   _instance ??= WebSocketProvider._internal();
+  //   return _instance!;
+  // }
+
+  void Connect() {
+    dispose();
+    if (_ipAddress.isEmpty || _port.isEmpty) {
+      return;
+    }
+    print("Connecting... ip: $_ipAddress port: $_port");
+    _channel = IOWebSocketChannel.connect('ws://$_ipAddress:$_port');
+    print("Connected!");
   }
 
   void sendMsgAndUpdateUI(String message) {
@@ -88,10 +117,11 @@ class WebSocketManager with ChangeNotifier {
         }
         _channel!.stream.listen((data) {
           String msg = data;
-          _receivedMessage = msg;
+          print(msg);
+          receivedMessage = msg;
           _updateRobotProperties(msg);
         }, onError: (error) {
-          _receivedMessage = error;
+          receivedMessage = error;
         });
       }
     } catch (ex) {
@@ -102,8 +132,10 @@ class WebSocketManager with ChangeNotifier {
 
   void dispose() {
     if (_channel != null) {
+      print("Channel disposing...");
       _channel!.sink.close();
       _channel = null;
+      print("Channel disposed");
     }
   }
 }

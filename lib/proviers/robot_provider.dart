@@ -1,17 +1,33 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:robot_app/proviers/pid_provider.dart';
+import 'package:robot_app/proviers/web_socket_provider.dart';
 import './led_provider.dart';
 import './pid_provider.dart';
 
 class RobotProvider with ChangeNotifier {
   static RobotProvider? _instance;
 
-  RobotProvider._internal() {}
+  RobotProvider._internal() {
+    SetupWebSocket();
+  }
 
   static RobotProvider get instance {
     _instance ??= RobotProvider._internal();
     return _instance!;
   }
+
+  late WebSocketProvider _webSocket;
+  WebSocketProvider get WebSocket => _webSocket;
+
+  SetupWebSocket() {
+    _webSocket =
+        new WebSocketProvider(this._webSocketIpAddress, this._webSocketPort);
+  }
+
+  String _webSocketIpAddress = "192.168.1.100";
+  String _webSocketPort = "81";
 
   double _linearVel = 0; // ms-1
   double _angularVel = 0; // rads-1
