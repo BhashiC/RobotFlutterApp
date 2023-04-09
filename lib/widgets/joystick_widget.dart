@@ -27,6 +27,7 @@ class JoystickWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("Joystick Widget Builder");
     _robot = Provider.of<RobotProvider>(context, listen: false);
     return Scaffold(
       appBar: AppBar(

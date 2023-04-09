@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:robot_app/proviers/robot_provider.dart';
 import 'package:robot_app/proviers/web_socket_provider.dart';
-import 'package:enum_to_string/enum_to_string.dart';
 import '../widgets/led_widget.dart';
 import '../widgets/joystick_widget.dart';
 import '../widgets/tile_widget.dart';
 import '../enums.dart';
+import '../extensions.dart';
 
 class WidgetsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    //WebSocketProvider.instance.updateSensors();
     RobotProvider.instance.WebSocket.updateSensors();
     return Scaffold(
       appBar: AppBar(title: const Text("Robot App")),
@@ -24,30 +23,30 @@ class WidgetsScreen extends StatelessWidget {
         ),
         children: [
           TileWidget(
-            EnumToString.convertToString(WidgetNames.leds, camelCase: true),
+            WidgetTileNames.leds.toHeadingString(),
             Colors.blue,
-            WidgetNames.leds,
+            WidgetTileNames.leds,
           ),
           TileWidget(
-            EnumToString.convertToString(WidgetNames.joystick, camelCase: true),
+            WidgetTileNames.joystick.toHeadingString(),
             Colors.orange,
-            WidgetNames.joystick,
+            WidgetTileNames.joystick,
           ),
           TileWidget(
-              EnumToString.convertToString(WidgetNames.pidController,
-                  camelCase: true),
-              Colors.red,
-              WidgetNames.pidController),
+            WidgetTileNames.pid_controller.toHeadingString(),
+            Colors.red,
+            WidgetTileNames.pid_controller,
+          ),
           TileWidget(
-              EnumToString.convertToString(WidgetNames.servoMotor,
-                  camelCase: true),
-              Colors.purple,
-              WidgetNames.servoMotor),
+            WidgetTileNames.servo_motor.toHeadingString(),
+            Colors.purple,
+            WidgetTileNames.servo_motor,
+          ),
           TileWidget(
-              EnumToString.convertToString(WidgetNames.webSocket,
-                  camelCase: true),
-              Colors.green,
-              WidgetNames.webSocket),
+            WidgetTileNames.web_socket.toHeadingString(),
+            Colors.green,
+            WidgetTileNames.web_socket,
+          ),
         ],
       ),
     );

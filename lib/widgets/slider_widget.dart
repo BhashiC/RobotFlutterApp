@@ -8,12 +8,12 @@ class SliderWidget extends StatelessWidget {
   final double _minLimit;
   final double _maxLimit;
 
-  SliderWidget(this._limits, this._minLimit, this._maxLimit);
+  SliderWidget(this._limits, this._minLimit, this._maxLimit, {Key? key})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
+    //print("Slider Widget Builder");
     var slider = Provider.of<SliderProvider>(context, listen: false);
-    slider.minVal = _minLimit;
-    slider.maxVal = _maxLimit;
     return Card(
         child: Column(children: [
       Row(

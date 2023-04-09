@@ -10,6 +10,7 @@ const List<double> _pidLimits = <double>[0, 0.1, 0.5, 1, 2, 5, 10, 20];
 class PidWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //print("Pid Widget Builder");
     var pid = Provider.of<PidProvider>(context, listen: false);
     return ListView.builder(
       scrollDirection: Axis.vertical,

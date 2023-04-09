@@ -12,33 +12,33 @@ import '../enums.dart';
 class TileWidget extends StatelessWidget {
   final String _title;
   final Color _color;
-  final WidgetNames _widgetName;
+  final WidgetTileNames _widgetName;
 
   TileWidget(this._title, this._color, this._widgetName);
 
-  void selectWidget(BuildContext context, WidgetNames widgetToPop) {
+  void selectWidget(BuildContext context, WidgetTileNames widgetToPop) {
     switch (widgetToPop) {
-      case WidgetNames.leds:
+      case WidgetTileNames.leds:
         Navigator.of(context).push(MaterialPageRoute(builder: (context) {
           return LedsScreen(); //(Colors.blue);
         }));
         break;
-      case WidgetNames.joystick:
+      case WidgetTileNames.joystick:
         Navigator.of(context).push(MaterialPageRoute(builder: (_) {
           return JoystickWidget(200);
         }));
         break;
-      case WidgetNames.pidController:
+      case WidgetTileNames.pid_controller:
         Navigator.of(context).push(MaterialPageRoute(builder: (_) {
           return PidsScreen(); //PidWidget();
         }));
         break;
-      case WidgetNames.servoMotor:
+      case WidgetTileNames.servo_motor:
         Navigator.of(context).push(MaterialPageRoute(builder: (_) {
           return ServoWidget();
         }));
         break;
-      case WidgetNames.webSocket:
+      case WidgetTileNames.web_socket:
         Navigator.of(context).push(MaterialPageRoute(builder: (_) {
           return WebSocketWidget();
         }));

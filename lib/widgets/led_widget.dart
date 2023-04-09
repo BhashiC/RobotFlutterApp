@@ -15,7 +15,7 @@ class LedWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var led = Provider.of<LedProvider>(context, listen: false);
-    print(led.displayName + " Builder");
+    //print(led.displayName + " Builder");
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

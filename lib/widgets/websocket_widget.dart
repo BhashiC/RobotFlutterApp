@@ -17,7 +17,7 @@ class WebSocketWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("websocket_widget build!");
+    print("Web Socket Widget Builder");
     return Scaffold(
       appBar: AppBar(
         title: Text("Web Socket"),

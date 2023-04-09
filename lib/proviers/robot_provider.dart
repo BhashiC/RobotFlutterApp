@@ -1,6 +1,6 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:robot_app/enums.dart';
+import 'package:robot_app/extensions.dart';
 import 'package:robot_app/proviers/pid_provider.dart';
 import 'package:robot_app/proviers/web_socket_provider.dart';
 import './led_provider.dart';
@@ -40,15 +40,21 @@ class RobotProvider with ChangeNotifier {
   double get angularMax => _angularMax;
 
   List<LedProvider> leds = [
-    LedProvider("Blue", "blue_led", Colors.blue),
-    LedProvider("Yellow", "yellow_led", Colors.orange),
-    LedProvider("White", "white_led", Colors.lime),
-    LedProvider("Red", "red_led", Colors.red),
+    LedProvider(DisplayNames.blue.toHeadingString(),
+        ConnectivityNames.blue_led.toShortString(), Colors.blue),
+    LedProvider(DisplayNames.yellow.toHeadingString(),
+        ConnectivityNames.yellow_led.toShortString(), Colors.orange),
+    LedProvider(DisplayNames.white.toHeadingString(),
+        ConnectivityNames.white_led.toShortString(), Colors.lime),
+    LedProvider(DisplayNames.red.toHeadingString(),
+        ConnectivityNames.red_led.toShortString(), Colors.red),
   ];
 
   List<PidProvider> pids = [
-    PidProvider("Left Motor", "Left_M"),
-    PidProvider("Right Motor", "Right_M"),
+    PidProvider(DisplayNames.left_motor.toHeadingString(),
+        ConnectivityNames.left_m.toShortString()),
+    PidProvider(DisplayNames.right_motor.toHeadingString(),
+        ConnectivityNames.right_m.toShortString()),
   ];
 
   set linearVel(double val) {
