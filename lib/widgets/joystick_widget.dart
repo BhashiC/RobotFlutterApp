@@ -53,6 +53,7 @@ class JoystickWidget extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 JoystickView(
+                  backgroundColor: Theme.of(context).primaryColor,
                   innerCircleColor: materialColors.Colors.black26,
                   onDirectionChanged: _onDirectionChanged,
                   size: _size,

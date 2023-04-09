@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:robot_app/screens/pids_screen.dart';
+import 'package:robot_app/screens/servo_screen.dart';
 import 'package:robot_app/widgets/websocket_widget.dart';
 import '../screens/widgets_screen.dart';
 import './joystick_widget.dart';
 import './led_widget.dart';
 import './pid_widget.dart';
-import './servo_widget.dart';
 import '../screens/leds_screen.dart';
 import '../enums.dart';
 
@@ -35,7 +35,7 @@ class TileWidget extends StatelessWidget {
         break;
       case WidgetTileNames.servo_motor:
         Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-          return ServoWidget();
+          return ServosScreen();
         }));
         break;
       case WidgetTileNames.web_socket:

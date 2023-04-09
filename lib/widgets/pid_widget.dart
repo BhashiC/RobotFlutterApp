@@ -14,13 +14,13 @@ class PidWidget extends StatelessWidget {
     return ListView.builder(
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
-      itemCount: pid.pidParameters.length,
+      itemCount: pid.pidSliders.length,
       itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
-        value: pid.pidParameters[i],
+        value: pid.pidSliders[i],
         child: SliderWidget(
           _pidLimits,
-          pid.pidParameters[i].minVal,
-          pid.pidParameters[i].maxVal,
+          pid.pidSliders[i].minVal,
+          pid.pidSliders[i].maxVal,
         ),
       ),
     );

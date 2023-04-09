@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:robot_app/enums.dart';
 import 'package:robot_app/extensions.dart';
 import 'package:robot_app/proviers/pid_provider.dart';
+import 'package:robot_app/proviers/servo_provider.dart';
 import 'package:robot_app/proviers/web_socket_provider.dart';
 import './led_provider.dart';
 import './pid_provider.dart';
@@ -55,6 +56,21 @@ class RobotProvider with ChangeNotifier {
         ConnectivityNames.left_m.toShortString()),
     PidProvider(DisplayNames.right_motor.toHeadingString(),
         ConnectivityNames.right_m.toShortString()),
+  ];
+
+  List<ServoProvider> servos = [
+    ServoProvider(DisplayNames.base_servo.toHeadingString(),
+        ConnectivityNames.base_servo.toShortString(), 0, 180),
+    ServoProvider(DisplayNames.shoulder_servo.toHeadingString(),
+        ConnectivityNames.shoulder_servo.toShortString(), 0, 180),
+    ServoProvider(DisplayNames.elbow_servo.toHeadingString(),
+        ConnectivityNames.elbow_servo.toShortString(), 0, 180),
+    ServoProvider(DisplayNames.wrist1_servo.toHeadingString(),
+        ConnectivityNames.wrist1_servo.toShortString(), 0, 180),
+    ServoProvider(DisplayNames.wrist2_servo.toHeadingString(),
+        ConnectivityNames.wrist2_servo.toShortString(), 0, 180),
+    ServoProvider(DisplayNames.wrist3_servo.toHeadingString(),
+        ConnectivityNames.wrist3_servo.toShortString(), 0, 180),
   ];
 
   set linearVel(double val) {

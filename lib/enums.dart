@@ -15,6 +15,12 @@ enum DisplayNames {
   red,
   left_motor,
   right_motor,
+  base_servo,
+  shoulder_servo,
+  elbow_servo,
+  wrist1_servo,
+  wrist2_servo,
+  wrist3_servo,
 }
 
 enum ConnectivityNames {
@@ -24,4 +30,10 @@ enum ConnectivityNames {
   red_led,
   left_m,
   right_m,
+  base_servo,
+  shoulder_servo,
+  elbow_servo,
+  wrist1_servo,
+  wrist2_servo,
+  wrist3_servo,
 }

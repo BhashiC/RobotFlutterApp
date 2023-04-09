@@ -23,9 +23,11 @@ class RobotApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Robot App',
         theme: ThemeData(
-            primarySwatch: Colors.green,
-            brightness: Brightness.dark,
-            primaryColor: Colors.green),
+          primarySwatch: Colors.green,
+          brightness: Brightness.dark,
+          primaryColor: Colors.green,
+        ),
+
         //theme: ThemeData.dark(),
         home: WidgetsScreen(),
       ),
