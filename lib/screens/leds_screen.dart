@@ -14,21 +14,12 @@ class LedsScreen extends StatelessWidget {
       ),
       body: SafeArea(
         child: Center(
-            child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 1,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-          ),
+            child: ListView.builder(
           padding: const EdgeInsets.all(10.0),
           itemCount: _robot.leds.length,
           itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
             value: _robot.leds[i],
-            child: LedWidget(
-              _robot.leds[i].displayName,
-              _robot.leds[i].color,
-            ),
+            child: LedWidget(),
           ),
         )),
       ),

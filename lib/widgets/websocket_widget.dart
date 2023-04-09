@@ -1,11 +1,9 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:robot_app/proviers/web_socket_provider.dart';
 import 'package:web_socket_channel/io.dart';
 import 'package:provider/provider.dart';
 import 'package:robot_app/proviers/robot_provider.dart';
-import 'package:flutter_titled_container/flutter_titled_container.dart';
 
 class WebSocketWidget extends StatelessWidget {
   final TextEditingController _sendMsgController =
@@ -93,10 +91,7 @@ class WebSocketWidget extends StatelessWidget {
                     ),
                     const SizedBox(height: 24),
                     Consumer<WebSocketProvider>(
-                      builder: (ctx, webSocket, _) =>
-                          //Container(
-                          //child:
-                          InputDecorator(
+                      builder: (ctx, webSocket, _) => InputDecorator(
                         decoration: InputDecoration(
                           labelText: 'Received Message',
                           border: OutlineInputBorder(
@@ -105,9 +100,7 @@ class WebSocketWidget extends StatelessWidget {
                         ),
                         child: Text(webSocket.receivedMessage),
                       ),
-                      // Text(webSocket.receivedMessage),
                     ),
-                    //)
                   ],
                 ),
               ),

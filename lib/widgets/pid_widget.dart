@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:robot_app/proviers/slider_provider.dart';
 import 'package:robot_app/widgets/slider_widget.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_titled_container/flutter_titled_container.dart';
 import '../proviers/pid_provider.dart';
 
 const List<double> _pidLimits = <double>[0, 0.1, 0.5, 1, 2, 5, 10, 20];

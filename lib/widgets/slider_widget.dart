@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import '../proviers/slider_provider.dart';
 import 'package:provider/provider.dart';
-import '../proviers/web_socket_provider.dart';
 
 class SliderWidget extends StatelessWidget {
   final List<double> _limits;
-  final double _minLimit;
-  final double _maxLimit;
 
-  SliderWidget(this._limits, this._minLimit, this._maxLimit, {Key? key})
-      : super(key: key);
+  SliderWidget(this._limits, minLimit, maxLimit, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     //print("Slider Widget Builder");

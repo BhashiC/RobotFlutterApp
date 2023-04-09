@@ -15,6 +15,7 @@ class PidsScreen extends StatelessWidget {
       body: SafeArea(
         child: Center(
             child: ListView.builder(
+          padding: const EdgeInsets.all(10.0),
           itemCount: _robot.pids.length,
           itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
             value: _robot.pids[i],
@@ -25,10 +26,9 @@ class PidsScreen extends StatelessWidget {
               Text(
                 _robot.pids[i].displayName,
                 style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  color: Colors.green,
-                ),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: Colors.green),
               ),
               const SizedBox(
                 height: 10,
